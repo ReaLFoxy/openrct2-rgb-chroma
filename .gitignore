@@ -13,9 +13,11 @@ node_modules/
 .cache
 *.tsbuildinfo
 
-# OS files
+# OS & Archive files
 .DS_Store
 Thumbs.db
+*.zip
+release_notes*.md
 
 # Dist (keep built bundle tracked for direct downloads)
 !dist/

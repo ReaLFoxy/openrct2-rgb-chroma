@@ -11,9 +11,11 @@ import {
 } from 'openrct2-flexui'
 
 import {
+	applyCurrentPermanent,
 	getRides,
 	isFlatRide,
 	startChroma,
+	stepChroma,
 	stopChroma,
 } from './chroma'
 import {
@@ -23,9 +25,9 @@ import {
 } from './state'
 
 export const chromaWindow = window({
-	title: 'RGB Chroma (v1.0.0)',
+	title: 'RGB Chroma (v1.1.0)',
 	width: { value: 320, min: 320, max: 320 },
-	height: { value: 315, min: 315, max: 315 },
+	height: { value: 400, min: 400, max: 400 },
 	onOpen: syncRideList,
 	content: [
 		box({
@@ -122,13 +124,13 @@ export const chromaWindow = window({
 							checkbox({
 								text: 'Vehicles (Cars & Flat)',
 								width: '50%',
-								isChecked: chromaStore.get().chromaVehicles,
+								isChecked: compute(chromaStore, (st) => st.chromaVehicles),
 								onChange: (val) => updateChromaState({ chromaVehicles: val }),
 							}),
 							checkbox({
 								text: 'Tracks (Wave)',
 								width: '50%',
-								isChecked: chromaStore.get().chromaTrack,
+								isChecked: compute(chromaStore, (st) => st.chromaTrack),
 								onChange: (val) => updateChromaState({ chromaTrack: val }),
 							}),
 						],
@@ -138,16 +140,21 @@ export const chromaWindow = window({
 							checkbox({
 								text: 'Balloons & Shops',
 								width: '50%',
-								isChecked: chromaStore.get().chromaBalloons,
+								isChecked: compute(chromaStore, (st) => st.chromaBalloons),
 								onChange: (val) => updateChromaState({ chromaBalloons: val }),
 							}),
 							checkbox({
 								text: 'Guests & Staff Clothes',
 								width: '50%',
-								isChecked: chromaStore.get().chromaGuests,
+								isChecked: compute(chromaStore, (st) => st.chromaGuests),
 								onChange: (val) => updateChromaState({ chromaGuests: val }),
 							}),
 						],
+					}),
+					checkbox({
+						text: 'Water (RGB Chroma Cycle)',
+						isChecked: compute(chromaStore, (st) => st.chromaWater),
+						onChange: (val) => updateChromaState({ chromaWater: val }),
 					}),
 					horizontal({
 						content: [
@@ -160,11 +167,31 @@ export const chromaWindow = window({
 							}),
 						],
 					}),
+					horizontal({
+						content: [
+							button({
+								text: '< Prev Step',
+								width: '50%',
+								height: '24px',
+								onClick: () => {
+									stepChroma(-1)
+								},
+							}),
+							button({
+								text: 'Next Step >',
+								width: '50%',
+								height: '24px',
+								onClick: () => {
+									stepChroma(1)
+								},
+							}),
+						],
+					}),
 					button({
-						text: 'Stop RGB & Restore Colors',
+						text: 'Apply Current as Permanent',
 						height: '24px',
 						onClick: () => {
-							stopChroma(true)
+							applyCurrentPermanent()
 						},
 					}),
 					button({
@@ -179,6 +206,13 @@ export const chromaWindow = window({
 							} else {
 								startChroma()
 							}
+						},
+					}),
+					button({
+						text: 'Stop RGB & Restore Colors',
+						height: '24px',
+						onClick: () => {
+							stopChroma(true)
 						},
 					}),
 				],

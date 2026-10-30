@@ -13,6 +13,7 @@ export interface ChromaState {
 	chromaTrack: boolean
 	chromaBalloons: boolean
 	chromaGuests: boolean
+	chromaWater: boolean
 	rides: Ride[]
 }
 
@@ -27,6 +28,7 @@ export const defaultChromaState: ChromaState = {
 	chromaTrack: true,
 	chromaBalloons: true,
 	chromaGuests: true,
+	chromaWater: false,
 	rides: [],
 }
 
@@ -59,6 +61,7 @@ export function updateChromaState(patch: Partial<ChromaState>) {
 			chromaTrack: updated.chromaTrack,
 			chromaBalloons: updated.chromaBalloons,
 			chromaGuests: updated.chromaGuests,
+			chromaWater: updated.chromaWater,
 		})
 	}
 }
