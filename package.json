@@ -1,0 +1,24 @@
+{
+  "name": "openrct2-rgb-chroma",
+  "version": "1.0.0",
+  "description": "Real-time 60 FPS Rainbow RGB Chroma FX plugin for OpenRCT2",
+  "type": "module",
+  "author": "ReaLFoxy",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --watch ./src --ext js,ts --exec \"npm run build:dev\"",
+    "build": "rollup --config rollup.config.js --environment BUILD:production",
+    "build:dev": "rollup --config rollup.config.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "nodemon": "^2.0.22",
+    "openrct2-flexui": "^0.1.0-prerelease.20",
+    "rollup": "^3.15.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.0"
+  }
+}
