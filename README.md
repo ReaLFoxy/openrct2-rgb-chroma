@@ -27,16 +27,16 @@ A dedicated, ultra-high-performance **60 FPS Real-Time Rainbow RGB Chroma FX** p
 * 🌈 **Classic Rainbow Spectrum**: 9-step vibrant spectrum rotation.
 
 ### 🎢 Intelligent Vehicle Styling
-* **Per Car (Rainbow Cars / 차량마다 다른 색)**: Colors shift dynamically backward along the train from car to car in real time. Works dynamically with any train length ($1 \sim N$ cars)!
-* **Per Train (Distinct Trains / 편성마다 다른 색)**: Each train cycles with its own harmonized phase offset.
-* **All Same (Synchronized / 모든 차량 같은 색)**: Synchronous train-wide color cycle.
+* **Per Car (Rainbow Cars)**: Colors shift dynamically backward along the train from car to car in real time. Works dynamically with any train length ($1 \sim N$ cars)!
+* **Per Train (Distinct Trains)**: Each train cycles with its own harmonized phase offset.
+* **All Same (Synchronized)**: Synchronous train-wide color cycle.
 * **Automatic In-Game Sync**: Automatically synchronizes OpenRCT2's internal `vehicleColourSettings` (`type: 6`) to match the selected mode.
 
 ### 🎡 Multi-Target Animation
 * **Vehicles**: Real-time coloring for roller coaster trains, tracked rides, and flat rides (Carousel, Ferris Wheel, Enterprise, Top Spin, Launched Freefall, etc.).
 * **Tracks & Ride Structures**: Synchronous 12-slot wave animation cycling Main and Alt 1–3 schemes across all coaster tracks, towers, and flat ride frames simultaneously.
 * **Balloons & Shops**: Real-time color transitions for guest balloons, umbrellas, and the merchandise displayed on stall sprites (Balloon Stalls, Souvenir Stalls, Hat Stalls, T-Shirt Stalls, Information Kiosks, and facilities).
-* **Guests & Staff Clothes**: Synchronized T-shirts and hats for guests, plus harmonized uniforms for **Handymen (미화원)**, **Mechanics (정비원)**, and **Security Guards (보안요원)**.
+* **Guests & Staff Clothes**: Synchronized T-shirts and hats for guests, plus harmonized uniforms for **Handymen**, **Mechanics**, and **Security Guards**.
 
 ### ⚡ Zero-Lag Architecture & Controls
 * **Direct Entity In-Memory Updates**: Moving coaster cars and guest clothes update via direct memory manipulation (`car.colours`), eliminating game action queue bottlenecks and guaranteeing **rock-solid 60 FPS**.
@@ -52,7 +52,7 @@ A dedicated, ultra-high-performance **60 FPS Real-Time Rainbow RGB Chroma FX** p
 ---
 
 ## ⚠️ Known Issues
-* **Color Restore Incomplete (색상 복원 미완료 현상)**: When clicking **"Stop RGB & Restore Colors"**, guest clothes, staff uniforms (미화원/정비원), stall merchandise items (풍선/우산/모자), and certain vehicle types currently may not completely revert back to their original pre-Chroma colors due to entity memory persistence and sprite palette constraints. Track structures (spines, rails, supports) and primary ride frames restore normally. A more comprehensive snapshot & restore engine for transient entities is planned for a future patch.
+* **Incomplete Color Restore for Certain Entities**: When clicking **"Stop RGB & Restore Colors"**, guest clothing, staff uniforms (handymen, mechanics, security), stall merchandise items (balloons, umbrellas, hats), and certain ride vehicle types currently do not completely revert to their original pre-Chroma colors due to entity lifecycle and in-memory palette limitations. Track structures (spines, rails, supports) and ride station frames restore normally. A more comprehensive snapshot and restore engine for transient entities is planned for an upcoming patch.
 
 ---
 
